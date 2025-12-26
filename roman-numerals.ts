@@ -4,7 +4,7 @@
 // EASY
 //
 
-const romanValue = {
+const romanValues = {
   I: { value: 1, validOperands: [] },
   II: { value: 2, validOperands: [] },
   III: { value: 3, validOperands: [] },
@@ -21,15 +21,12 @@ const romanValue = {
   M: { value: 1000, validOperands: ["C"] },
 };
 
-const validRomanNumerals = Object.keys(romanValue);
+const validRomanNumerals = Object.keys(romanValues);
 
-const isValidCharacter = (char: string) => {
-  return Object.keys(romanValue).includes(char);
-};
+const isValidCharacter = (char: string) => validRomanNumerals.includes(char);
 
-const operationIsValid = (op1: string, op2: string) => {
-  return romanValue[op2].validOperands.includes(op1);
-};
+const operationIsValid = (op1: string, op2: string) =>
+  romanValues[op2].validOperands.includes(op1);
 
 const sumUp = (input: string): number => {
   const characters = input.split("");
@@ -42,13 +39,13 @@ const sumUp = (input: string): number => {
     if (validRomanNumerals.indexOf(op2) > validRomanNumerals.indexOf(op1)) {
       if (!operationIsValid(op1, op2))
         throw new Error(`this operation is invalid ${op1} ${op2}`);
-      res += romanValue[op2].value - romanValue[op1].value;
+      res += romanValues[op2].value - romanValues[op1].value;
     } else {
-      res += romanValue[op1].value + romanValue[op2].value;
+      res += romanValues[op1].value + romanValues[op2].value;
     }
   }
   if (characters.length === 1) {
-    res += romanValue[characters.pop()!].value;
+    res += romanValues[characters.pop()!].value;
   }
   return res;
 };
