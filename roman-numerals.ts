@@ -43,10 +43,6 @@ const sumUp = (input: string): number => {
       if (!operationIsValid(op1, op2))
         throw new Error(`this operation is invalid ${op1} ${op2}`);
       res += romanValue[op2].value - romanValue[op1].value;
-    } else if (
-      validRomanNumerals.indexOf(op1) === validRomanNumerals.indexOf(op2)
-    ) {
-      res += romanValue[op1].value + romanValue[op2].value;
     } else {
       res += romanValue[op1].value + romanValue[op2].value;
     }
