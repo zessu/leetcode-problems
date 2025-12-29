@@ -20,3 +20,20 @@ const addDigits = (input: number) => {
 
 console.log(addDigits(9876));
 console.log(addDigits(1234));
+
+/**
+ *
+ * solution using digital root
+ *
+int addDigits(int num) {
+    // Handle the case when num is 0.
+    if (num == 0)
+        return 0;
+    // If num is divisible by 9, return 9 as the digital root.
+    if (num % 9 == 0)
+        return 9;
+    // Otherwise, return num modulo 9.
+    return num % 9;
+}
+ *
+ * */
