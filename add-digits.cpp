@@ -1,3 +1,9 @@
+// problem addDigits
+// Given a non-negative integer num, repeatedly sum its digits until the result
+// is a single digit. Return that single-digit number. Google Amazon Meta Uber
+// MSFT, Google,
+// EASY
+//
 #include <iostream>
 
 int addDigits(int num) {
