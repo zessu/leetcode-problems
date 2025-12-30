@@ -1,3 +1,11 @@
+// problem addStrings
+// Given two non-negative integers represented as strings, num1 and num2, return the sum of num1 and num2 as a string.
+// The solution must simulate the addition process without using any built-in libraries to handle large integers or
+// directly converting the strings to integers.
+// is a single digit. Return that single-digit number. Google Amazon Meta Uber
+// Meta, Tiktok, Google
+// EASY
+//
 const popElement = (input: string[]) => {
   const el = input.pop();
   return el ? parseInt(el) : 0;
