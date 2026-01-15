@@ -8,30 +8,38 @@ class BSTNode {
 }
 
 class BST {
-  public head: BSTNode | null = null;
+  public root: BSTNode | null = null;
   constructor() {}
 
   public isEmpty() {
-    return this.head === null;
+    return this.root === null;
   }
 
   public printHead() {
-    console.log(this.head?.value);
+    console.log(this.root?.value);
   }
 
   public addNode(val: number) {
-    const item = new BSTNode(val);
-    let pointer: BSTNode;
-    if (this.isEmpty()) return (this.head = item);
-    pointer = this.head as BSTNode;
-    while (pointer.value !== item.value) {
-      if (pointer.value < item.value) {
-        if (pointer.right === null) return (pointer.right = item);
-        pointer = pointer.right;
+    if (this.isEmpty()) this.root = new BSTNode(val);
+    else {
+      this.insert(this.root as BSTNode, val);
+    }
+  }
+
+  public insert(node: BSTNode, val: number) {
+    if (node.value === val) return;
+    if (node.value > val) {
+      if (node.left === null) {
+        node.left = new BSTNode(val);
+      } else {
+        return this.insert(node.left, val);
       }
-      if (pointer.value > item.value) {
-        if (pointer.left === null) return (pointer.left = item);
-        pointer = pointer.left;
+    }
+    if (node.value < val) {
+      if (node.right === null) {
+        node.right = new BSTNode(val);
+      } else {
+        return this.insert(node.right, val);
       }
     }
   }
@@ -56,5 +64,5 @@ mybst.addNode(2);
 mybst.addNode(1);
 mybst.addNode(5);
 mybst.addNode(5);
-console.log(mybst.head);
-console.log(mybst.search(mybst.head, 5));
+console.log(mybst.search(mybst.root, 5));
+console.log(mybst.root);
